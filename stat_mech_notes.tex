@@ -1,0 +1,474 @@
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{epsfig,amssymb,euscript,slashed}
+\usepackage{amsmath}
+\usepackage{cite} 
+%\usepackage{draftfil}
+\usepackage{array,calc,epsfig}
+%\usepackage{pstricks}
+%\usepackage{showkeys}
+%\usepackage{citesort}
+%\usepackage{bbm}
+\usepackage{mathbbol}
+\usepackage{fancybox}
+\usepackage[linktocpage]{hyperref}
+\usepackage{simplewick}
+\usepackage{ytableau}
+\def\baselinestretch{1.1}
+\oddsidemargin .20in
+\evensidemargin .5in
+\topmargin 0in
+\textwidth 6.25in
+\textheight 8.5in
+
+%To define the \arctanh operator, from the amsmath package
+\DeclareMathOperator\arctanh{arctanh}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bseq{\begin{subequations}}
+\def\eseq{\end{subequations}}
+\newcommand{\eq}[1]{\begin{equation}#1\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\newcommand\bbone{\ensuremath{\mathbbm{1}}}
+\newcommand{\ul}{\underline}
+\def\bseq{\begin{subequations}}
+\def\eseq{\end{subequations}}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\hr{\rho}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% By default the equations are consecutively numbered. This may be changed by
+%% the following command.
+\numberwithin{equation}{section} %%
+%%
+%% The usage of multiple languages is possible.
+%% \usepackage{ngerman}% or
+%% \usepackage[english,ngerman]{babel}
+%% \usepackage[english,french]{babel}
+\usepackage[]{graphicx}
+
+\def\d {{\rm d}}
+
+\def\cala{{\cal A}}
+\def\calA {{\mathfrak A}}
+\def\calAbar{{\underline \calA}}
+\def\calb{{\cal B}}
+\def\calc{{\cal C}}
+\def\cald{{\cal D}}
+\def\cale{{\cal E}}
+\def\calf{{\cal F}}
+\def\calg{{\cal G}}
+\def\calG{{\mathfrak G}}
+\def\calh{{\cal H}}
+\def\cali{{\cal I}}
+\def\calj{{\cal J}}
+\def\calk {{\cal K}}
+\def\call {{\cal L}}
+\def\calm         {{\cal M}}
+\def\caln         {{\cal N}}
+\def\calo         {{\cal O}}
+\def\calp         {{\cal P}}
+\def\calq         {{\cal Q}}
+\def\calr         {{\cal R}}
+\def\cals         {{\cal S}}
+\def\calt         {{\cal T}}
+\def\calu         {{\cal U}}
+\def\calv         {{\cal V}}
+\def\calw         {{\cal W}}
+\def\calz         {{\cal Z}}
+
+\def\complex      {{\mathbb C}}
+\def\naturals     {{\mathbb N}}
+\def\projective   {{\mathbb P}}
+\def\rationals    {{\mathbb Q}}
+\def\reals        {{\mathbb R}}
+\def\zet          {{\mathbb Z}}
+
+\def\del          {\partial}
+\def\delbar       {\bar\partial}
+%\def\ee           {{\rm e}}
+\def\ii {{\rm i}}
+\def\chain{{\circ}}
+\def\tr {\mathop{\rm Tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\id{{\it id}}
+\def\ads{{\rm AdS}}
+
+\def\de#1#2{{\rm d}^{#1}\!#2\,}
+\def\De#1{{\cald}#1\,}
+\def\ket#1{|{#1}\rangle}
+
+\def\half{{\frac12}}
+\newcommand\topa[2]{\genfrac{}{}{0pt}{2}{\scriptstyle #1}{\scriptstyle #2}}
+\def\undertilde#1{{\vphantom#1\smash{\underset{\widetilde{\hphantom{\displaystyle#1}}}{#1}}}}
+\def\prodprime{\mathop{{\prod}'}}
+\def\gsq#1#2{%
+    {\scriptstyle #1}\square\limits_{\scriptstyle #2}{\,}} % Ginsparg    square
+\def\sqr#1#2{{\vcenter{\vbox{\hrule height.#2pt
+ \hbox{\vrule width.#2pt height#1pt \kern#1pt \vrule width.#2pt}\hrule
+ height.#2pt}}}}
+\def\square{%
+  \mathop{\mathchoice{\sqr{12}{15}}{\sqr{9}{12}}{\sqr{6.3}{9}}{\sqr{4.5}{9}}}}
+
+%%%%%%%%% jtl macros
+%%%%%%%%%%%%
+\newcommand{\fft}[2]{{\frac{#1}{#2}}}
+\newcommand{\ft}[2]{{\textstyle{\frac{#1}{#2}}}}
+\def\jsquare{\mathop{\mathchoice{\sqr{8}{32}}{\sqr{9}{12}}
+{\sqr{6.3}{9}}{\sqr{4.5}{9}}}}
+
+%%%%%%%%% paper specific macros
+%%%%%%%%%%%%
+
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\r{\rho}
+\def\rp{r_+}
+\def\tq{\tilde{q}}
+\def\la{\lambda}
+
+\def\m{\mu}
+\def\g{\gamma}
+\def\l{\lambda}
+\def\n{\nu}
+\def\o{\omega}
+\def\d{\text{d}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\slashchar#1{\setbox0=\hbox{$#1$}           % set a box for #1
+\dimen0=\wd0                                 % and get its size
+\setbox1=\hbox{/} \dimen1=\wd1               % get siste of /
+\ifdim\dimen0>\dimen1                        % #1 is bigger
+\rlap{\hbox to \dimen0{\hfil/\hfil}}      % so center / in box
+#1                                        % and print #1
+\else                                        % / is bigger
+\rlap{\hbox to \dimen1{\hfil$#1$\hfil}}   % so center #1
+/                                         % and print /
+\fi}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%\usepackage{chngcntr}
+%%\counterwithout{equation}{section} % undo numbering system provided by phstyle.cls
+%\counterwithin{equation}{chapter}  % implement desired numbering system
+
+%\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\tableofcontents
+
+
+\section{The ideal gas}
+Let's consider an \textbf{ideal gas} of $N$ particles in $3$ dimensions. The number of degrees of freedom of the system, i.e. the dimension of the configuration space, is $D=3N$ and classically the system can occupy a continuum of microscopic states. Each particle's momentum is a $3$-component vector as well, therefore the phase space has dimension $6N$.
+
+An ideal gas is an approximation of a system with a macroscopic number of particles for which the density is small enough that interactions among particles can be neglected, so that each particle has only kinetic energy and the total energy of the system is given just by the sum of each particle's kinetic energy,
+\begin{equation}
+E = \sum_{i=1}^{3N} \frac {p_i^2}{2 m},
+\end{equation}
+where $p_j$ is the $j$-th component of the vector obtained by concatenating the momenta for all of the particles.
+
+\subsection{States counting}
+The states of the system are classically continuous and no counting is possible. Quantum mechanically though, each particle can occupy only one cell in phase space with size given by $h = 2\pi\hbar$ (and volume $h^3=(2\pi\hbar)^3$). A single quantum state of the system is identified by the cell of volume $\Delta x_1 \Delta p_1 \cdots \Delta x_{3N} \Delta p_{3N} = h^{3N}$ it occupies. The volume in phase space available to the system if it has energy less than $E$ is
+\begin{equation}
+\begin{aligned}
+\Omega^{(D)}(E) &= \int \text{d}x_1\cdots\mathrm{d}x_{3N}\,\mathrm{d}p_1\cdots\text{d}p_{3N}\\
+&= \int_{V^N} \mathrm{d}x_1\cdots\mathrm{d}x_{3N}\int_{\sum_{i=1}^{3N} p_i^2 < 2 m E} \mathrm{d}p_1\cdots\mathrm{d}p_{3N}\\
+&= V^N\,\Omega^{(D)}_p (E),
+\end{aligned}
+\end{equation}
+where $V$ is the total volume available in coordinate space and $\Omega^{(D)}_p (E)$ is the volume in momentum space defined by the ball
+\begin{equation}
+\Omega^{(D)}_p (E) = \left\lbrace \left(
+\begin{array}{c}
+p_1\\
+\vdots\\
+p_{3N}
+\end{array}
+\right) \left| \sum_{i=1}^{3N} \frac {p_i^2}{2 m} < E \right.\right\rbrace.
+\end{equation}
+The fact that the integrals in position and momentum space factorize is a consequence of the fact that the energy of the system only depends on the momenta (there are no external fields and the interactions among the particles is neglected): the integration limit in momentum space are independent from the coordinates in configuration space.
+
+For a single particle with momentum with components $p_x, p_y, p_z$, $\Omega^{(D)}_p (E)$ is the volume of the sphere in $3$ dimensions
+\begin{equation}
+\biggl\lbrace p_x^2 + p_y^2 + p_z^2 < 2 m E\biggr\rbrace,
+\end{equation}
+with radius $R = \sqrt{2mE}$, so $\Omega^{(D)}_p (E) = \frac{4}{3}\pi (2mE)^3$.
+
+To compute $\Omega^{(D)}_p (E)$ for a system of $N$ particles, let's first write it as
+\begin{equation}
+\label{psvolume_general}
+\Omega^{(D)}_p (E) = A_D\,R^D = A_D \left( R^2 \right)^{D/2}
+\end{equation}
+where again $R = \sqrt{2mE}$ is the radius of the ball and $A_D$ a dimensionless constant. $\Omega^{(D)}_p (E)$ must necessarily have this form, as the volume in $D$ dimensions must scale like $R^D$ for dimensional reasons. Computing the volume in momentum space is now equivalent to computing $A_D$. Taking the derivative w.r.t. $R^2$ we get
+\begin{equation}
+\frac{\mathrm{d} \Omega^{(D)}_p (E)}{\mathrm{d} R^2} = A_D\,\frac{D}{2}\,\left(R^2\right)^{\frac{D}{2}-1}.
+\end{equation}
+Let's now consider the following integral,
+\begin{equation}
+\label{altintegral}
+\begin{aligned}
+\int_0^{+\infty} \mathrm{d}R^2\,\frac{\mathrm{d} \Omega^{(D)}_p (E)}{\mathrm{d} R^2}\,e^{-R^2} &= A_D\,\frac{D}{2} \int_0^{+\infty} \mathrm{d}R^2\,\left(R^2\right)^{\frac{D}{2}-1}\,e^{-R^2}\\
+&=A_D\,\frac{D}{2}\,\Gamma\left(\frac{D}{2}\right),
+\end{aligned}
+\end{equation}
+where we recognized the definition of Euler's Gamma function
+\begin{equation}
+\Gamma(z) \equiv \int_0^{+\infty} \mathrm{d}t\,t^{z-1}\,e^{-t}.
+\end{equation}
+We can compute $\Omega^{(D)}_p (E)$ in another way as well. We have
+\begin{equation}
+\label{volumetheta}
+\begin{aligned}
+\Omega^{(D)}_p (E) &= \int_{\sum_{i=1}^{D} p_i^2 < R^2} \mathrm{d}p_1 \cdots \mathrm{d}p_{3N}\\
+&= \int_{-\infty}^{+\infty} \mathrm{d}p_1 \cdots \int_{-\infty}^{+\infty} \mathrm{d}p_{D}\,\Theta\left( R^2 - p_1^2 - \cdots - p_D^2 \right),
+\end{aligned}
+\end{equation}
+where $\Theta$ is the Heaviside distribution
+\begin{equation}
+\Theta(x) =
+\left\lbrace\begin{array}{l}
+1\quad\mathrm{if}\,x >0\\
+0\quad\mathrm{if}\,x <0
+\end{array}\right.
+\end{equation}
+The derivative of $\Theta$ (in the sense of distributions) is Dirac's Delta function,
+\begin{equation}
+\frac{\mathrm{d}\Theta(x)}{\mathrm{d}x} = \delta(x),
+\end{equation}
+so if we take the derivative of \eqref{volumetheta} w.r.t. $R^2$ and bring if inside the integrals we get
+\begin{equation}
+\frac{\mathrm{d}\Omega^{(D)}_p (E)}{\mathrm{d}R^2} = \int_{-\infty}^{+\infty} \mathrm{d}p_1 \cdots \int_{-\infty}^{+\infty} \mathrm{d}p_{D}\,\delta\left( R^2 - p_1^2 - \cdots - p_D^2 \right).
+\end{equation}
+We can use this to directly compute the integral in \eqref{altintegral},
+\begin{equation}
+\label{deltagaussians}
+\begin{aligned}
+\int_0^{+\infty} \mathrm{d}R^2\,\frac{\mathrm{d} \Omega^{(D)}_p (E)}{\mathrm{d} R^2}\,e^{-R^2} &= \int_0^{+\infty} \mathrm{d}R^2 \int_{-\infty}^{+\infty} \mathrm{d}p_1 \cdots \int_{-\infty}^{+\infty} \mathrm{d}p_{D}\,\delta\left( R^2 - p_1^2 - \cdots - p_D^2 \right)\,e^{-R^2}\\
+&= \int_{-\infty}^{+\infty} \mathrm{d}p_1\,e^{p_1^2} \cdots \int_{-\infty}^{+\infty} \mathrm{d}p_{D}\,e^{p_D^2}\\
+&= \pi^{D/2},
+\end{aligned}
+\end{equation}
+where we exploited the famous integral
+\begin{equation}
+\int_{-\infty}^{+\infty}\mathrm{d}x\,e^{-x^2} = \sqrt{\pi}.
+\end{equation}
+Putting together \eqref{altintegral} and \eqref{deltagaussians} we get
+\begin{equation}
+A_D = \frac{2 \pi^{D/2}}{D\,\Gamma\left(\frac{D}{2}\right)}.
+\end{equation}
+Inserting this into \eqref{psvolume_general} we can compute the phase space volume occupied by $N$ particles in $3$ dimensions with energy smaller than $E$,
+\begin{equation}
+\label{idealgas_psvolume}
+\Omega^{(D)} (E)= V^N\,\Omega^{(D)}_p = V^N\,\frac{2\pi^{D/2}}{D\,\Gamma\left(\frac{D}{2}\right)}\,R^D = V^N\,\frac{2\left(2\pi m E\right)^{3N/2}}{3N\,\Gamma\left(\frac{3N}{2}\right)}.
+\end{equation}
+
+We can now count the multiplicity of states of an ideal gas in $3$ dimensions with energy smaller than $E$, i.e. the total number of states. To do so we divide by the volume of one single state, $h^{3N}$. If we do not assume any additional characteristic that can allow for the particles to be distinguished, than the particles are \textbf{indistinguishable} and we have to divide by an additional factor $N!$ (without this extra factor we would be counting states with two particles exchanged as different states, which they are not if the particles are indistinguishable: $N!$ is just the number of possible permutations of the $N$ particles). The multiplicity is thus
+\begin{equation}
+\label{idealgas_multiplicity}
+\mathcal{N}_N(E) = \frac{V^N 2\pi^{D/2}}{h^{D}\,N!\,D\,\Gamma\left(\frac{D}{2}\right)}\,R^D.
+\end{equation}
+
+To compute the entropy of an ideal gas we have to count the number of microscopic states whose energy is exactly $E$. If we assume uniform probability distribution on the microstates that satisfy that constraint (i.e. we assume the microstates are a \textbf{microcanonical ensemble}), we can then compute the entropy using Boltzmann's formula
+\begin{equation}
+\label{boltzmann_entropy}
+S(N, E) = k_B\log\left(\mathcal{N}(N, E)\right),
+\end{equation}
+where $\mathcal{N}(N, E)$ is the number of such microstates.
+
+\subsection{Entropy}
+To compute $\mathcal{N}(N, E)$, let's first considers a sequence of energy shells of width $\Delta E$. If we denote with $\Omega_{\Delta E}(E)$ the phase space volume of a shell with energy in $\left[ E-\Delta E, E+\Delta E\right]$, for small enough $\Delta E$ we have
+\begin{equation}
+\label{psvineq}
+\Omega_{\Delta E}(E) < \Omega^{(D)}(E) < \frac{E}{\Delta E}\,\Omega_{\Delta E}(E).
+\end{equation}
+The energy $E$ scales like the number of particles, i.e. if we take a system of $N$ particles at energy $E$ and alter the number of particles $N\to\alpha N$ the energy becomes $E\to\alpha E$ (energy is extensive),
+\begin{equation}
+E \sim N.
+\end{equation}
+The volumes in phase space on the other hand scale exponentially with $N$ (or $D$), as can be seen from \eqref{idealgas_psvolume} in the case of $\Omega^{(D)}(E)$. This implies the scalings
+\begin{equation}
+\log\left( \Omega_{\Delta E}(E) \right) \sim D,\quad \log\left( \Omega^{(D)}(E) \right) \sim D,\quad \log\left( E \right) \sim \log(D),
+\end{equation}
+therefore is we take the $\log$ of \eqref{psvineq} we get that the term on the left and on the right scale in the same way as $D\to\infty$, and in particular they have the same scaling as the middle term,
+\begin{equation}
+\log\left(\frac{E}{\Delta E}\,\Omega_{\Delta E}(E)\right) \sim \log(D) + D \sim D,
+\end{equation}
+$\log(D)$ being subleading for large $D$. For a large number of degrees of freedom we can then assume that $\log\left(\Omega_{\Delta E}\right) \simeq \log\left(\Omega^{(D)}\right)$, which implies that if $D$ is large the number of microstates counted using $\Omega_{\Delta E}$ (i.e. $\mathcal{N}_N(E)$ in \eqref{idealgas_multiplicity}) is the same we'd get using $\log\left(\Omega^{(D)}\right)$.
+
+Assuming $3N$ is even (and therefore that $3N/2$ is a positive integer) we have that
+\begin{equation}
+\frac{3N}{2}\,\Gamma\left( \frac{3N}{2} \right) = \Gamma\left( \frac{3N}{2}+1\right) = \left( 3N/2\right)!,
+\end{equation}
+where we used that $z\,\Gamma(z)=\Gamma(z+1)$ and that $\Gamma(n+1) = n!\,\,\forall n\in \mathbb{Z}_+$. The microstate multiplicity \eqref{idealgas_multiplicity} can then be written as
+\begin{equation}
+\mathcal{N}_N(E) = \frac{V^N (2\pi m E)^{3N/2}}{h^{3N}N!\left(3N/2\right)!}.
+\end{equation}
+
+Substituting \eqref{idealgas_multiplicity} in \eqref{boltzmann_entropy} we get the entropy of an ideal gas
+\begin{equation}
+\label{idealgas_entropy}
+S(N, E) = k_B\log\left( \frac{V^N (2\pi m E)^{3N/2}}{h^{3N}N!\left(3N/2\right)!} \right).
+\end{equation}
+Using Stirling's approximation
+\begin{equation}
+\log(n!) \simeq n\log(n)-n,
+\end{equation}
+the entropy \eqref{idealgas_entropy} then becomes
+\begin{equation}
+S(N, E) = \frac{5 N k_B}{2} + N k_B\log\left( \frac{V}{N} \left(\frac{4\pi m E }{3 N h^2} \right)^{3/2} \right),
+\end{equation}
+which is called the \textit{Sackur-Tetrode} entropy.
+
+\subsection{Thermodynamic relations}
+Given the entropy as a function of the volume $V$ of the system, the number of particles $N$ and the total energy $E$, it is possible to determine the temperature $T$ via the thermodynamic relation
+\begin{equation}
+\frac{1}{T} = \left( \frac{\partial S}{\partial E}\right)_{V,N}.
+\end{equation}
+For an ideal gas we have
+\begin{equation}
+E = \frac{3 N k_B T}{2},
+\end{equation}
+which relates energy and temperature. An analogous relation holds for the pressure $P$ of the system,
+\begin{equation}
+\frac{P}{T} = \left( \frac{\partial S}{\partial V}\right)_{E,N}.
+\end{equation}
+For the ideal gas this gives
+\begin{equation}
+P V = N k_B T,
+\end{equation}
+which is the equation of state of an ideal gas.
+
+\section{Stochastic processes}
+Stochastic processes describe how probability distributions evolve in time. They provide a theoretical framework with which to describe out of equilibrium statistical mechanics and, more in general, comprise the models in which events can occur at a given time with a certain probability.
+
+\subsection{Markov chains}
+Markov chains describe processes in which a random variable $Y$ can transition from a value to another at fixed time intervals (discrete time). In a more physical setting, they can be used to describe the transitions of a system from one state to another. If $Y$ can have values $\left\lbrace y_1, \ldots, y_N \right\rbrace$, transition occur at time $t = \tau, 2\,\tau, \ldots, s\tau, \ldots$, with $s=1, 2, 3, \ldots$ and $\tau >0$.
+
+We denote with $P_n(s)$ the probability that at time $t=s\tau$ the random variable $Y$ has value $y_n$. Moreover, we denote\footnote{Note that here $s_1<s_2$ and the transition has to be read \textit{from left to right}, i.e. $(n_1, s_1)\to (n_2, s_2)$, contrary to what usually happens with probabilities or with what people do in quantum mechanical transitions.} with $P\left(n_1, s_1|n_2, s_2\right)$ the probability that $Y$ has value $y_{n_2}$ at time $t=s_2 \tau$ given that it had value $y_{n_1}$ at time $t = s_2 \tau$.
+
+Given the definitions above, we can write the probability of $Y$ having value $y_n$ at time $t = (s+1)\,\tau$ as
+\begin{equation}
+\label{absolute_prob_state}
+P_n(s+1) = \sum_{m=1}^N P_m(s)\,P\left(m, s| n, s+1\right),
+\end{equation}
+which is: the probability of $Y$ having value $y_n$ at time $s+1$ is given by the probability of $Y$ having any value at time $s$ times the probability of transition from any value at time $s$ to $y_n$ at time $s+1$. Here ``any" means that we are integrating (summing, in the discrete case) over all possible values at time $s$. $P\left(m, s| n, s+1\right)$ is called \textit{transition probability}.
+
+$P_n(s+1)$ can also be written as
+\begin{equation}
+P_n(s+1) = \sum_{n_0 = 1}^N P_{n_0}(s_0)\,P\left(n_0, s_0|n, s+1\right),
+\end{equation}
+while $P_m(s)$ can be written as
+\begin{equation}
+P_m(s) = \sum_{n_0=1}^N P_{n_0}(s_0)\,P\left(n_0, s_0|m, s\right).
+\end{equation}
+Substituting these into \eqref{absolute_prob_state} we get
+\begin{equation}
+\begin{aligned}
+\sum_{n_0 = 1}^N P_{n_0}(s_0)&\,P\left(n_0, s_0|n, s+1\right) =\\
+&= \sum_{m=1}^N \sum_{n_0=1}^N P_{n_0}(s_0)\,P\left(n_0, s_0|m, s\right)\,P\left(m, s| n, s+1\right)\\
+&= \sum_{n_0=1}^N P_{n_0}(s_0)\,\left( \sum_{m=1}^N P\left(n_0, s_0|m, s\right)\,P\left(m, s| n, s+1\right)\right),
+\end{aligned}
+\end{equation}
+and thus
+\begin{equation}
+P\left(n_0, s_0|n, s+1\right) = \sum_{m=1}^N P\left(n_0, s_0|m, s\right)\,P\left(m, s| n, s+1\right).
+\end{equation}
+This last derivation might look like an overkill: the above result is only saying that any transition probability $(n_0, s_0)\to (n, s+1)$ can be expressed as the composition of the probabilities for the transitions $(n_0, s_0)\to (m, s)$ and $(m, s)\to (n, s+1)$, integrating over the intermediate state $y_m$ at time $s$.
+
+If the transition probabilities do not depend on time, then we can write the probability of the transition $(m,s)\to (n,s+1)$ as a matrix $Q_{m,n} = P\left(m,s|n,s+1\right)$ that is the same at \textit{any} time $s$, so
+\begin{equation}
+P_n(s) = \sum_{m+1}^N P_m(0)\,\left(Q^s\right)_{m,n},
+\end{equation}
+where $\left(Q^s\right)_{m,n}$ is the $(m,n)$ entry of the product matrix of $Q$ with itself $s$ times.
+
+In general, $Q$ is not symmetric, so it will have different left and right eigenvectors. We can compute its eigenvalues by solving the \textit{secular equation}
+\begin{equation}
+\det\left( Q - \lambda\,\mathbb{1}\right) = 0
+\end{equation}
+for $\lambda$, which, $Q$ being an $N\times N$ matrix, will in general have $N$ solutions $\lambda_1, \ldots, \lambda_N \in\mathbb{C}$. Each eigenvalue $\lambda_j$ will have an associated right (columns) eigenvector
+\begin{equation*}
+\psi_j = \left(\begin{array}{c}
+\psi_{j,1} \\
+\vdots \\
+\psi_{j,N}
+\end{array}\right)
+\end{equation*}
+satisfying the right eigenvalue equation
+\begin{equation}
+Q \psi_j = \lambda_j\,\psi_j
+\end{equation}
+and an associated left (row) eigenvector
+\begin{equation*}
+\chi_j = \left( \chi_{j,1}, \cdots, \chi_{j,N}\right)
+\end{equation*}
+satisfying the left eigenvalue equation
+\begin{equation}
+\chi_j Q = \lambda_j\,\chi_j.
+\end{equation}
+Left and right eigenvectors are complete (their tensor product is the identity) and orthogonal,
+\begin{equation}
+\chi_j\cdot\psi_{j^\prime}  = \alpha_j\,\delta_{j, j^\prime}.
+\end{equation}
+Moreover, the modulus of all the eigenvalues cannot exceed unity, $|\lambda_j| \leq 1\,\, \forall j$ and at least one of the eigenvalues, which we can conventionally define to be $\lambda_1$ has value $\lambda_1=1$.
+
+The transition matrix $Q$ can be expanded in terms of its eigenvalues as
+\begin{equation}
+Q_{m,n} = \sum_{j=1}^N \lambda_j\,\psi_{j,m}\,\chi_{j,n},
+\end{equation}
+which gives an expansion for the transition probability between two states at time $s_0$ an $s$ respectively ($s_0<s$),
+\begin{equation}
+P\left(m, s_0 | n, s \right) = \sum_{j=1}^N \lambda^{s-s_0}_j\,\psi_{j,m}\,\chi_{j,n}.
+\end{equation}
+
+We say that the transition matrix $Q$ is \textit{regular} if $\exists N\in\mathbb{N}$ such that all the elements of $Q^N$ are nonzero. If $Q$ is regular, there's only one eigenvalue with value $1$ and the probability of a state $n$ at time $s$, $P_n(s)$ tends to a unique stationary value $P_n^{\text{st}}$ for large $s$.
+
+\subsection{Stochastic processes with continuous time: the master equation}
+Consider now a stochastic process in which a random variable $Y$ has discrete realizations (can take discrete values) but transitions can occur at a time interval that is free to vary continuously. We can derive a differential equation for the probability of a state as a function of time.
+
+Let's denote the probability of state $n$ at time $t$ as $P(n, t)$. Then the probability of finding state $n$ at time $t+\Delta t$ is
+\begin{equation}
+P(n, t+\Delta t) = \sum_{m=1}^N P(m, t)\,P(m, t |n, t+\Delta t),
+\end{equation}
+where $\Delta t$ is a small time interval. This is just a rewriting of \eqref{absolute_prob_state}. By definition, the time derivative of the a probability at time $t$ is
+\begin{equation}
+\begin{aligned}
+\frac{\partial P(n, t)}{\partial t} &= \lim_{\Delta t \to 0} \left[ \frac{P(n, t+\Delta t) - P(n, t)}{\Delta t} \right]\\
+&= lim_{\Delta t \to 0} \frac{1}{\Delta t} \sum_{m=1}^N P(m, t) \Bigl[ P(m, t |n, t+\Delta t) - \delta_{m,n} \Bigr].
+\end{aligned}
+\end{equation}
+
+We can expand the transition probability in a power series in $\Delta t$: since for zero time interval no transition can occur, the zero-order term has to be the identity,
+\begin{equation}
+\label{trans_prob_derivative}
+P(m, t |n, t+\Delta t) = \delta_{m,n} + \mathcal{O}\left(\Delta t\right).
+\end{equation}
+This is equivalent to saying that the transition probability satisfies the initial condition $P(n,t | m,t) = \delta_{m,n}$. The first-order term will be proportional to a \textit{transition probability rate} $w_{m,n}(t)$ that computes the probability of the transition $m\to n$ in the interval $\Delta t$ when multiplied by $\Delta t$ itself ($P(m, t|n, t+\Delta t) = w_{m,n}(t)\,\Delta t$). In general the expansion will not conserve probabilities at all times. In order to achieve this, the correct way to expand the transition probability up to first order is
+\begin{equation}
+\label{trans_prob_expansion}
+P(m, t |n, t+\Delta t) = \delta_{m,n} \left[ 1 -\Delta t \sum_{l=1}^N w_{m,l}(t) \right] + w_{m,n}(t)\,\Delta t + \mathcal{O}\left(\Delta t^2\right),
+\end{equation}
+where the first term in the sum represents the probability of no transition (it's one minus the probability of transition from $m$ to any other state) and the second one the probability of the $m\to n$ transition in the time interval $\Delta t$.
+
+Substituting \eqref{trans_prob_expansion} into \eqref{trans_prob_derivative} we get the \textit{master equation}
+\begin{equation}
+\frac{\partial P(n, t)}{\partial t} = \sum_{m=1}^N \Bigl[ P(m, t)\,w_{m,n}(t) - P(n,t)\,w_{n,m}(t)\Bigr].
+\end{equation}
+The master equation can be interpreted as giving the rate of change of $P(n,t)$ in time in terms of transitions from any state to $n$ (first term in the RHS) minus the transitions from $n$ to any other state.
+
+
+
+
+\end{document}
